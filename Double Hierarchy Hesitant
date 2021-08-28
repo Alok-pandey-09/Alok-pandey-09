@@ -1,0 +1,600 @@
+
+
+ #you can easily convert this into input based code where you can play with
+ #multiple rating values to check how it changes the output
+ #this the the raw data, B0 to B9 represents 10 rows of initial vendor data
+ #each input in a row represent factor ratings
+
+
+
+#here we merge all input data to get our desired matrix
+
+D1=[B0,B1,B2,B3,B4,B5,B6,B7,B8,B9]
+
+ #converting into 5*6 matrix where each factor has been considered
+ #and merged to get single output
+
+x=0
+y=0
+b1a1=(D1[x][y+0])*(D1[x][y+1])+(D1[x+1][y+0])*(D1[x+1][y+1])
+b1a2=(D1[x][y+2])*(D1[x][y+3])+(D1[x+1][y+2])*(D1[x+1][y+3])
+b1a3=(D1[x][y+4])*(D1[x][y+5])+(D1[x+1][y+4])*(D1[x+1][y+5])
+b1a4=(D1[x][y+6])*(D1[x][y+7])+(D1[x+1][y+6])*(D1[x+1][y+7])
+b1a5=(D1[x][y+8])*(D1[x][y+9])+(D1[x+1][y+8])*(D1[x+1][y+9])
+b1a6=(D1[x][y+10])*(D1[x][y+11])+(D1[x+1][y+10])*(D1[x+1][y+11])
+b1=[b1a1,b1a2,b1a3,b1a4,b1a5,b1a6]
+x=1
+b2a1=(D1[x][y+0])*(D1[x][y+1])+(D1[x+1][y+0])*(D1[x+1][y+1])
+b2a2=(D1[x][y+2])*(D1[x][y+3])+(D1[x+1][y+2])*(D1[x+1][y+3])
+b2a3=(D1[x][y+4])*(D1[x][y+5])+(D1[x+1][y+4])*(D1[x+1][y+5])
+b2a4=(D1[x][y+6])*(D1[x][y+7])+(D1[x+1][y+6])*(D1[x+1][y+7])
+b2a5=(D1[x][y+8])*(D1[x][y+9])+(D1[x+1][y+8])*(D1[x+1][y+9])
+b2a6=(D1[x][y+10])*(D1[x][y+11])+(D1[x+1][y+10])*(D1[x+1][y+11])
+b2=[b2a1,b2a2,b2a3,b2a4,b2a5,b2a6]
+x=2
+b3a1=(D1[x][y+0])*(D1[x][y+1])+(D1[x+1][y+0])*(D1[x+1][y+1])
+b3a2=(D1[x][y+2])*(D1[x][y+3])+(D1[x+1][y+2])*(D1[x+1][y+3])
+b3a3=(D1[x][y+4])*(D1[x][y+5])+(D1[x+1][y+4])*(D1[x+1][y+5])
+b3a4=(D1[x][y+6])*(D1[x][y+7])+(D1[x+1][y+6])*(D1[x+1][y+7])
+b3a5=(D1[x][y+8])*(D1[x][y+9])+(D1[x+1][y+8])*(D1[x+1][y+9])
+b3a6=(D1[x][y+10])*(D1[x][y+11])+(D1[x+1][y+10])*(D1[x+1][y+11])
+b3=[b3a1,b3a2,b3a3,b3a4,b3a5,b3a6]
+x=3
+b4a1=(D1[x][y+0])*(D1[x][y+1])+(D1[x+1][y+0])*(D1[x+1][y+1])
+b4a2=(D1[x][y+2])*(D1[x][y+3])+(D1[x+1][y+2])*(D1[x+1][y+3])
+b4a3=(D1[x][y+4])*(D1[x][y+5])+(D1[x+1][y+4])*(D1[x+1][y+5])
+b4a4=(D1[x][y+6])*(D1[x][y+7])+(D1[x+1][y+6])*(D1[x+1][y+7])
+b4a5=(D1[x][y+8])*(D1[x][y+9])+(D1[x+1][y+8])*(D1[x+1][y+9])
+b4a6=(D1[x][y+10])*(D1[x][y+11])+(D1[x+1][y+10])*(D1[x+1][y+11])
+b4=[b4a1,b4a2,b4a3,b4a4,b4a5,b4a6]
+x=4
+b5a1=(D1[x][y+0])*(D1[x][y+1])+(D1[x+1][y+0])*(D1[x+1][y+1])
+b5a2=(D1[x][y+2])*(D1[x][y+3])+(D1[x+1][y+2])*(D1[x+1][y+3])
+b5a3=(D1[x][y+4])*(D1[x][y+5])+(D1[x+1][y+4])*(D1[x+1][y+5])
+b5a4=(D1[x][y+6])*(D1[x][y+7])+(D1[x+1][y+6])*(D1[x+1][y+7])
+b5a5=(D1[x][y+8])*(D1[x][y+9])+(D1[x+1][y+8])*(D1[x+1][y+9])
+b5a6=(D1[x][y+10])*(D1[x][y+11])+(D1[x+1][y+10])*(D1[x+1][y+11])
+b5=[b5a1,b5a2,b5a3,b5a4,b5a5,b5a6]
+D01=[b1,b2,b3,b4,b5]
+
+
+#finding corresponding mean for each column
+u1=(b1a1+b2a1+b3a1+b4a1+b5a1)/5
+u2=(b1a2+b2a2+b3a2+b4a2+b5a2)/5
+u3=(b1a3+b2a3+b3a3+b4a3+b5a3)/5
+u4=(b1a4+b2a4+b3a4+b4a4+b5a4)/5
+u5=(b1a5+b2a5+b3a5+b4a5+b5a5)/5
+u6=(b1a6+b2a6+b3a6+b4a6+b5a6)/5
+#print('u1:',u1, '  u2: ',u2,'  u3:',u3,'  u4:',u4,'  u5:',u5,'  u6:',u6)
+#finding sta deviation for each column
+s1=(((((b1a1-u1)**2))+((b2a1-u2)**2)+((b3a1-u3)**2)+((b4a1-u4)**2)+((b5a1-u5)**2))/5)**(1/2)
+s2=(((((b1a2-u1)**2))+((b2a2-u2)**2)+((b3a2-u3)**2)+((b4a2-u4)**2)+((b5a2-u5)**2))/5)**(1/2)
+s3=(((((b1a3-u1)**2))+((b2a3-u2)**2)+((b3a3-u3)**2)+((b4a3-u4)**2)+((b5a3-u5)**2))/5)**(1/2)
+s4=(((((b1a4-u1)**2))+((b2a4-u2)**2)+((b3a4-u3)**2)+((b4a4-u4)**2)+((b5a4-u5)**2))/5)**(1/2)
+s5=(((((b1a5-u1)**2))+((b2a5-u2)**2)+((b3a5-u3)**2)+((b4a5-u4)**2)+((b5a5-u5)**2))/5)**(1/2)
+s6=(((((b1a6-u1)**2))+((b2a6-u2)**2)+((b3a6-u3)**2)+((b4a6-u4)**2)+((b5a6-u5)**2))/5)**(1/2)
+#print('s1:',s1, '  s2: ',s2,'  s3:',s3,'  s4:',s4,'  s5:',s5, '  s6:',s6)
+d11=[(b1a1-u1)/s1,(b1a2-u2)/s2,(b1a3-u3)/s3,(b1a4-u4)/s4,(u5-b1a5)/s5,(u6-b1a6)/s6]
+d12=[(b2a1-u1)/s1,(b2a2-u2)/s2,(b2a3-u3)/s3,(b2a4-u4)/s4,(u5-b2a5)/s5,(u6-b2a6)/s6]
+d13=[(b3a1-u1)/s1,(b3a2-u2)/s2,(b3a3-u3)/s3,(b3a4-u4)/s4,(u5-b3a5)/s5,(u6-b3a6)/s6]
+d14=[(b4a1-u1)/s1,(b4a2-u2)/s2,(b4a3-u3)/s3,(b4a4-u4)/s4,(u5-b4a5)/s5,(u6-b4a6)/s6]
+d15=[(b5a1-u1)/s1,(b5a2-u2)/s2,(b5a3-u3)/s3,(b5a4-u4)/s4,(u5-b5a5)/s5,(u6-b5a6)/s6]
+D_N1=[d11,d12,d13,d14,d15,]
+
+D1col1=[(b1a1-u1)/s1,(b2a1-u1)/s1,(b3a1-u1)/s1,(b4a1-u1)/s1,(b5a1-u1)/s1]
+D1col2=[(b1a2-u1)/s1,(b2a2-u1)/s1,(b3a2-u1)/s1,(b4a2-u1)/s1,(b5a2-u1)/s1]
+D1col3=[(b1a3-u1)/s1,(b2a3-u1)/s1,(b3a3-u1)/s1,(b4a3-u1)/s1,(b5a3-u1)/s1]
+D1col4=[(b1a4-u1)/s1,(b2a4-u1)/s1,(b3a4-u1)/s1,(b4a4-u1)/s1,(b5a4-u1)/s1]
+D1col5=[(b1a5-u1)/s1,(b2a5-u1)/s1,(b3a5-u1)/s1,(b4a5-u1)/s1,(b5a5-u1)/s1]
+D1col6=[(b1a6-u1)/s1,(b2a6-u1)/s1,(b3a6-u1)/s1,(b4a6-u1)/s1,(b5a6-u1)/s1]
+max_col1=max(D1col1)
+min_col1=min(D1col1)
+max_col2=max(D1col2)
+min_col2=min(D1col2)
+max_col3=max(D1col3)
+min_col3=min(D1col3)
+max_col4=max(D1col4)
+min_col4=min(D1col4)
+max_col5=max(D1col5)
+min_col5=min(D1col5)
+max_col6=max(D1col6)
+min_col6=min(D1col6)
+DM1_pos=[max_col1,max_col2,max_col3,max_col4,min_col5,min_col6]
+DM1_neg=[min_col1,min_col2,min_col3,min_col4,max_col5,max_col6]
+#print('ideal for D1',DM1_pos,  '   nadir for D1',DM1_neg)
+
+#DECISION MATRIX 2
+
+B0=[6,2,4,3,5,2,4,6,2,2,2,5]
+B1=[2,5,3,6,2,4,5,5,3,4,3,2]
+B2=[6,2,6,2,3,6,3,4,6,6,5,2]
+B3=[5,2,5,2,2,5,2,2,2,3,5,2]
+B4=[4,4,3,5,5,2,2,5,6,5,2,6]
+B5=[2,5,6,3,2,3,3,2,4,5,2,2]
+B6=[6,2,3,6,2,2,5,4,5,6,6,2]
+B7=[5,6,3,4,4,5,6,5,6,3,3,3]
+B8=[5,5,4,5,4,6,2,4,3,5,3,5]
+B9=[3,6,6,5,6,3,6,2,4,4,6,3]
+
+#here we merge all input data to get our desired matrix
+
+D2=[B0,B1,B2,B3,B4,B5,B6,B7,B8,B9]
+
+ #converting into 5*6 matrix where each factor has been considered and merged to get single output
+#print('D2: ', D2)
+x=0
+y=0
+b1a1=(D2[x][y+0])*(D2[x][y+1])+(D2[x+1][y+0])*(D2[x+1][y+1])
+b1a2=(D2[x][y+2])*(D2[x][y+3])+(D2[x+1][y+2])*(D2[x+1][y+3])
+b1a3=(D2[x][y+4])*(D2[x][y+5])+(D2[x+1][y+4])*(D2[x+1][y+5])
+b1a4=(D2[x][y+6])*(D2[x][y+7])+(D2[x+1][y+6])*(D2[x+1][y+7])
+b1a5=(D2[x][y+8])*(D2[x][y+9])+(D2[x+1][y+8])*(D2[x+1][y+9])
+b1a6=(D2[x][y+10])*(D2[x][y+11])+(D2[x+1][y+10])*(D2[x+1][y+11])
+b1=[b1a1,b1a2,b1a3,b1a4,b1a5,b1a6]
+x=1
+b2a1=(D2[x][y+0])*(D2[x][y+1])+(D2[x+1][y+0])*(D2[x+1][y+1])
+b2a2=(D2[x][y+2])*(D2[x][y+3])+(D2[x+1][y+2])*(D2[x+1][y+3])
+b2a3=(D2[x][y+4])*(D2[x][y+5])+(D2[x+1][y+4])*(D2[x+1][y+5])
+b2a4=(D2[x][y+6])*(D2[x][y+7])+(D2[x+1][y+6])*(D2[x+1][y+7])
+b2a5=(D2[x][y+8])*(D2[x][y+9])+(D2[x+1][y+8])*(D2[x+1][y+9])
+b2a6=(D2[x][y+10])*(D2[x][y+11])+(D2[x+1][y+10])*(D2[x+1][y+11])
+b2=[b2a1,b2a2,b2a3,b2a4,b2a5,b2a6]
+x=2
+b3a1=(D2[x][y+0])*(D2[x][y+1])+(D2[x+1][y+0])*(D2[x+1][y+1])
+b3a2=(D2[x][y+2])*(D2[x][y+3])+(D2[x+1][y+2])*(D2[x+1][y+3])
+b3a3=(D2[x][y+4])*(D2[x][y+5])+(D2[x+1][y+4])*(D2[x+1][y+5])
+b3a4=(D2[x][y+6])*(D2[x][y+7])+(D2[x+1][y+6])*(D2[x+1][y+7])
+b3a5=(D2[x][y+8])*(D2[x][y+9])+(D2[x+1][y+8])*(D2[x+1][y+9])
+b3a6=(D2[x][y+10])*(D2[x][y+11])+(D2[x+1][y+10])*(D2[x+1][y+11])
+b3=[b3a1,b3a2,b3a3,b3a4,b3a5,b3a6]
+x=3
+b4a1=(D2[x][y+0])*(D2[x][y+1])+(D2[x+1][y+0])*(D2[x+1][y+1])
+b4a2=(D2[x][y+2])*(D2[x][y+3])+(D2[x+1][y+2])*(D2[x+1][y+3])
+b4a3=(D2[x][y+4])*(D2[x][y+5])+(D2[x+1][y+4])*(D2[x+1][y+5])
+b4a4=(D2[x][y+6])*(D2[x][y+7])+(D2[x+1][y+6])*(D2[x+1][y+7])
+b4a5=(D2[x][y+8])*(D2[x][y+9])+(D2[x+1][y+8])*(D2[x+1][y+9])
+b4a6=(D2[x][y+10])*(D2[x][y+11])+(D2[x+1][y+10])*(D2[x+1][y+11])
+b4=[b4a1,b4a2,b4a3,b4a4,b4a5,b4a6]
+x=4
+b5a1=(D2[x][y+0])*(D2[x][y+1])+(D2[x+1][y+0])*(D2[x+1][y+1])
+b5a2=(D2[x][y+2])*(D2[x][y+3])+(D2[x+1][y+2])*(D2[x+1][y+3])
+b5a3=(D2[x][y+4])*(D2[x][y+5])+(D2[x+1][y+4])*(D2[x+1][y+5])
+b5a4=(D2[x][y+6])*(D2[x][y+7])+(D2[x+1][y+6])*(D2[x+1][y+7])
+b5a5=(D2[x][y+8])*(D2[x][y+9])+(D2[x+1][y+8])*(D2[x+1][y+9])
+b5a6=(D2[x][y+10])*(D2[x][y+11])+(D2[x+1][y+10])*(D2[x+1][y+11])
+b5=[b5a1,b5a2,b5a3,b5a4,b5a5,b5a6]
+D02=[b1,b2,b3,b4,b5]
+
+#finding corresponding mean for each column
+u1=(b1a1+b2a1+b3a1+b4a1+b5a1)/5
+u2=(b1a2+b2a2+b3a2+b4a2+b5a2)/5
+u3=(b1a3+b2a3+b3a3+b4a3+b5a3)/5
+u4=(b1a4+b2a4+b3a4+b4a4+b5a4)/5
+u5=(b1a5+b2a5+b3a5+b4a5+b5a5)/5
+u6=(b1a6+b2a6+b3a6+b4a6+b5a6)/5
+#print('u1:',u1, '  u2: ',u2,'  u3:',u3,'  u4:',u4,'  u5:',u5,'  u6:',u6)
+#finding sta deviation for each column
+s1=(((((b1a1-u1)**2))+((b2a1-u2)**2)+((b3a1-u3)**2)+((b4a1-u4)**2)+((b5a1-u5)**2))/5)**(1/2)
+s2=(((((b1a2-u1)**2))+((b2a2-u2)**2)+((b3a2-u3)**2)+((b4a2-u4)**2)+((b5a2-u5)**2))/5)**(1/2)
+s3=(((((b1a3-u1)**2))+((b2a3-u2)**2)+((b3a3-u3)**2)+((b4a3-u4)**2)+((b5a3-u5)**2))/5)**(1/2)
+s4=(((((b1a4-u1)**2))+((b2a4-u2)**2)+((b3a4-u3)**2)+((b4a4-u4)**2)+((b5a4-u5)**2))/5)**(1/2)
+s5=(((((b1a5-u1)**2))+((b2a5-u2)**2)+((b3a5-u3)**2)+((b4a5-u4)**2)+((b5a5-u5)**2))/5)**(1/2)
+s6=(((((b1a6-u1)**2))+((b2a6-u2)**2)+((b3a6-u3)**2)+((b4a6-u4)**2)+((b5a6-u5)**2))/5)**(1/2)
+#print('s1:',s1, '  s2: ',s2,'  s3:',s3,'  s4:',s4,'  s5:',s5, '  s6:',s6)
+
+d21=[(b1a1-u1)/s1,(b1a2-u2)/s2,(b1a3-u3)/s3,(b1a4-u4)/s4,(u5-b1a5)/s5,(u6-b1a6)/s6]
+d22=[(b2a1-u1)/s1,(b2a2-u2)/s2,(b2a3-u3)/s3,(b2a4-u4)/s4,(u5-b2a5)/s5,(u6-b2a6)/s6]
+d23=[(b3a1-u1)/s1,(b3a2-u2)/s2,(b3a3-u3)/s3,(b3a4-u4)/s4,(u5-b3a5)/s5,(u6-b3a6)/s6]
+d24=[(b4a1-u1)/s1,(b4a2-u2)/s2,(b4a3-u3)/s3,(b4a4-u4)/s4,(u5-b4a5)/s5,(u6-b4a6)/s6]
+d25=[(b5a1-u1)/s1,(b5a2-u2)/s2,(b5a3-u3)/s3,(b5a4-u4)/s4,(u5-b5a5)/s5,(u6-b5a6)/s6]
+D_N2=[d21,d22,d23,d24,d25]
+
+D2col1=[(b1a1-u1)/s1,(b2a1-u1)/s1,(b3a1-u1)/s1,(b4a1-u1)/s1,(b5a1-u1)/s1]
+D2col2=[(b1a2-u1)/s1,(b2a2-u1)/s1,(b3a2-u1)/s1,(b4a2-u1)/s1,(b5a2-u1)/s1]
+D2col3=[(b1a3-u1)/s1,(b2a3-u1)/s1,(b3a3-u1)/s1,(b4a3-u1)/s1,(b5a3-u1)/s1]
+D2col4=[(b1a4-u1)/s1,(b2a4-u1)/s1,(b3a4-u1)/s1,(b4a4-u1)/s1,(b5a4-u1)/s1]
+D2col5=[(b1a5-u1)/s1,(b2a5-u1)/s1,(b3a5-u1)/s1,(b4a5-u1)/s1,(b5a5-u1)/s1]
+D2col6=[(b1a6-u1)/s1,(b2a6-u1)/s1,(b3a6-u1)/s1,(b4a6-u1)/s1,(b5a6-u1)/s1]
+max_col1=max(D2col1)
+min_col1=min(D2col1)
+max_col2=max(D2col2)
+min_col2=min(D2col2)
+max_col3=max(D2col3)
+min_col3=min(D2col3)
+max_col4=max(D2col4)
+min_col4=min(D2col4)
+max_col5=max(D2col5)
+min_col5=min(D2col5)
+max_col6=max(D2col6)
+min_col6=min(D2col6)
+DM2_pos=[max_col1,max_col2,max_col3,max_col4,min_col5,min_col6]
+DM2_neg=[min_col1,min_col2,min_col3,min_col4,max_col5,max_col6]
+#print('ideal for D2',DM2_pos,  '   nadir for D2',DM2_neg)
+#for decision matrix 3
+B0=[2,5,3,4,4,5,4,4,2,6,4,6]
+B1=[3,3,3,5,5,5,3,4,4,5,3,5]
+B2=[3,3,4,5,4,4,3,6,4,5,3,3]
+B3=[4,4,5,5,5,2,4,5,3,6,5,5]
+B4=[6,2,6,2,3,6,3,4,6,6,5,4]
+B5=[5,2,5,2,2,5,2,2,2,3,5,5]
+B6=[3,6,3,5,4,4,4,6,3,3,6,6]
+B7=[5,5,4,5,4,5,3,3,6,4,5,2]
+B8=[2,4,2,6,5,4,2,3,5,5,4,5]
+B9=[4,6,2,4,2,6,4,2,4,3,3,6]
+
+#here we merge all input data to get our desired matrix
+
+D3=[B0,B1,B2,B3,B4,B5,B6,B7,B8,B9]
+
+ #converting into 5*6 matrix where each factor has been considered and merged to get single output
+#print('D3: ', D3)
+x=0
+y=0
+b1a1=(D3[x][y+0])*(D3[x][y+1])+(D3[x+1][y+0])*(D3[x+1][y+1])
+b1a2=(D3[x][y+2])*(D3[x][y+3])+(D3[x+1][y+2])*(D3[x+1][y+3])
+b1a3=(D3[x][y+4])*(D3[x][y+5])+(D3[x+1][y+4])*(D3[x+1][y+5])
+b1a4=(D3[x][y+6])*(D3[x][y+7])+(D3[x+1][y+6])*(D3[x+1][y+7])
+b1a5=(D3[x][y+8])*(D3[x][y+9])+(D3[x+1][y+8])*(D3[x+1][y+9])
+b1a6=(D3[x][y+10])*(D3[x][y+11])+(D3[x+1][y+10])*(D3[x+1][y+11])
+b1=[b1a1,b1a2,b1a3,b1a4,b1a5,b1a6]
+x=1
+b2a1=(D3[x][y+0])*(D3[x][y+1])+(D3[x+1][y+0])*(D3[x+1][y+1])
+b2a2=(D3[x][y+2])*(D3[x][y+3])+(D3[x+1][y+2])*(D3[x+1][y+3])
+b2a3=(D3[x][y+4])*(D3[x][y+5])+(D3[x+1][y+4])*(D3[x+1][y+5])
+b2a4=(D3[x][y+6])*(D3[x][y+7])+(D3[x+1][y+6])*(D3[x+1][y+7])
+b2a5=(D3[x][y+8])*(D3[x][y+9])+(D3[x+1][y+8])*(D3[x+1][y+9])
+b2a6=(D3[x][y+10])*(D3[x][y+11])+(D3[x+1][y+10])*(D3[x+1][y+11])
+b2=[b2a1,b2a2,b2a3,b2a4,b2a5,b2a6]
+x=2
+b3a1=(D3[x][y+0])*(D3[x][y+1])+(D3[x+1][y+0])*(D3[x+1][y+1])
+b3a2=(D3[x][y+2])*(D3[x][y+3])+(D3[x+1][y+2])*(D3[x+1][y+3])
+b3a3=(D3[x][y+4])*(D3[x][y+5])+(D3[x+1][y+4])*(D3[x+1][y+5])
+b3a4=(D3[x][y+6])*(D3[x][y+7])+(D3[x+1][y+6])*(D3[x+1][y+7])
+b3a5=(D3[x][y+8])*(D3[x][y+9])+(D3[x+1][y+8])*(D3[x+1][y+9])
+b3a6=(D3[x][y+10])*(D3[x][y+11])+(D3[x+1][y+10])*(D3[x+1][y+11])
+b3=[b3a1,b3a2,b3a3,b3a4,b3a5,b3a6]
+x=3
+b4a1=(D3[x][y+0])*(D3[x][y+1])+(D3[x+1][y+0])*(D3[x+1][y+1])
+b4a2=(D3[x][y+2])*(D3[x][y+3])+(D3[x+1][y+2])*(D3[x+1][y+3])
+b4a3=(D3[x][y+4])*(D3[x][y+5])+(D3[x+1][y+4])*(D3[x+1][y+5])
+b4a4=(D3[x][y+6])*(D3[x][y+7])+(D3[x+1][y+6])*(D3[x+1][y+7])
+b4a5=(D3[x][y+8])*(D3[x][y+9])+(D3[x+1][y+8])*(D3[x+1][y+9])
+b4a6=(D3[x][y+10])*(D3[x][y+11])+(D3[x+1][y+10])*(D3[x+1][y+11])
+b4=[b4a1,b4a2,b4a3,b4a4,b4a5,b4a6]
+x=4
+b5a1=(D3[x][y+0])*(D3[x][y+1])+(D3[x+1][y+0])*(D3[x+1][y+1])
+b5a2=(D3[x][y+2])*(D3[x][y+3])+(D3[x+1][y+2])*(D3[x+1][y+3])
+b5a3=(D3[x][y+4])*(D3[x][y+5])+(D3[x+1][y+4])*(D3[x+1][y+5])
+b5a4=(D3[x][y+6])*(D3[x][y+7])+(D3[x+1][y+6])*(D3[x+1][y+7])
+b5a5=(D3[x][y+8])*(D3[x][y+9])+(D3[x+1][y+8])*(D3[x+1][y+9])
+b5a6=(D3[x][y+10])*(D3[x][y+11])+(D3[x+1][y+10])*(D3[x+1][y+11])
+b5=[b5a1,b5a2,b5a3,b5a4,b5a5,b5a6]
+D03=[b1,b2,b3,b4,b5]
+
+#finding corresponding mean for each column
+u1=(b1a1+b2a1+b3a1+b4a1+b5a1)/5
+u2=(b1a2+b2a2+b3a2+b4a2+b5a2)/5
+u3=(b1a3+b2a3+b3a3+b4a3+b5a3)/5
+u4=(b1a4+b2a4+b3a4+b4a4+b5a4)/5
+u5=(b1a5+b2a5+b3a5+b4a5+b5a5)/5
+u6=(b1a6+b2a6+b3a6+b4a6+b5a6)/5
+#print('u1:',u1, '  u2: ',u2,'  u3:',u3,'  u4:',u4,'  u5:',u5,'  u6:',u6)
+#finding standard deviation for each column
+s1=(((((b1a1-u1)**2))+((b2a1-u2)**2)+((b3a1-u3)**2)+((b4a1-u4)**2)+((b5a1-u5)**2))/5)**(1/2)
+s2=(((((b1a2-u1)**2))+((b2a2-u2)**2)+((b3a2-u3)**2)+((b4a2-u4)**2)+((b5a2-u5)**2))/5)**(1/2)
+s3=(((((b1a3-u1)**2))+((b2a3-u2)**2)+((b3a3-u3)**2)+((b4a3-u4)**2)+((b5a3-u5)**2))/5)**(1/2)
+s4=(((((b1a4-u1)**2))+((b2a4-u2)**2)+((b3a4-u3)**2)+((b4a4-u4)**2)+((b5a4-u5)**2))/5)**(1/2)
+s5=(((((b1a5-u1)**2))+((b2a5-u2)**2)+((b3a5-u3)**2)+((b4a5-u4)**2)+((b5a5-u5)**2))/5)**(1/2)
+s6=(((((b1a6-u1)**2))+((b2a6-u2)**2)+((b3a6-u3)**2)+((b4a6-u4)**2)+((b5a6-u5)**2))/5)**(1/2)
+#print('s1:',s1, '  s2: ',s2,'  s3:',s3,'  s4:',s4,'  s5:',s5, '  s6:',s6)
+
+d31=[(b1a1-u1)/s1,(b1a2-u2)/s2,(b1a3-u3)/s3,(b1a4-u4)/s4,(u5-b1a5)/s5,(u6-b1a6)/s6]
+d32=[(b2a1-u1)/s1,(b2a2-u2)/s2,(b2a3-u3)/s3,(b2a4-u4)/s4,(u5-b2a5)/s5,(u6-b2a6)/s6]
+d33=[(b3a1-u1)/s1,(b3a2-u2)/s2,(b3a3-u3)/s3,(b3a4-u4)/s4,(u5-b3a5)/s5,(u6-b3a6)/s6]
+d34=[(b4a1-u1)/s1,(b4a2-u2)/s2,(b4a3-u3)/s3,(b4a4-u4)/s4,(u5-b4a5)/s5,(u6-b4a6)/s6]
+d35=[(b5a1-u1)/s1,(b5a2-u2)/s2,(b5a3-u3)/s3,(b5a4-u4)/s4,(u5-b5a5)/s5,(u6-b5a6)/s6]
+D_N3=[d31,d32,d33,d34,d35]
+
+D3col1=[(b1a1-u1)/s1,(b2a1-u1)/s1,(b3a1-u1)/s1,(b4a1-u1)/s1,(b5a1-u1)/s1]
+D3col2=[(b1a2-u1)/s1,(b2a2-u1)/s1,(b3a2-u1)/s1,(b4a2-u1)/s1,(b5a2-u1)/s1]
+D3col3=[(b1a3-u1)/s1,(b2a3-u1)/s1,(b3a3-u1)/s1,(b4a3-u1)/s1,(b5a3-u1)/s1]
+D3col4=[(b1a4-u1)/s1,(b2a4-u1)/s1,(b3a4-u1)/s1,(b4a4-u1)/s1,(b5a4-u1)/s1]
+D3col5=[(b1a5-u1)/s1,(b2a5-u1)/s1,(b3a5-u1)/s1,(b4a5-u1)/s1,(b5a5-u1)/s1]
+D3col6=[(b1a6-u1)/s1,(b2a6-u1)/s1,(b3a6-u1)/s1,(b4a6-u1)/s1,(b5a6-u1)/s1]
+max_col1=max(D3col1)
+min_col1=min(D3col1)
+max_col2=max(D3col2)
+min_col2=min(D3col2)
+max_col3=max(D3col3)
+min_col3=min(D3col3)
+max_col4=max(D3col4)
+min_col4=min(D3col4)
+max_col5=max(D3col5)
+min_col5=min(D3col5)
+max_col6=max(D3col6)
+min_col6=min(D3col6)
+DM3_pos=[max_col1,max_col2,max_col3,max_col4,min_col5,min_col6]
+DM3_neg=[min_col1,min_col2,min_col3,min_col4,max_col5,max_col6]
+#print('ideal for D3',DM3_pos,  '   nadir for D3',DM3_neg)
+
+#ranking
+
+print('criteria weights:')
+cw1=0.175039
+cw2=0.222579
+cw3=0.139856
+cw4=0.238181
+cw5=0.060262
+cw6=0.164083
+cw=[cw1,cw2,cw3,cw4,cw5,cw6]
+print(cw)
+
+
+
+#for matrix 1
+w=0
+W=0
+for i in d11:
+    for j in cw:
+        for k in DM1_pos:
+            for l in DM1_neg:
+                while d11.index(i)==cw.index(j)==DM1_pos.index(k)==DM1_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos11=(w)**(1/2)
+W_neg11=(W)**(1/2)
+w=0
+W=0
+for i in d12:
+    for j in cw:
+        for k in DM1_pos:
+            for l in DM1_neg:
+                while d12.index(i)==cw.index(j)==DM1_pos.index(k)==DM1_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+
+w_pos12=(w)**(1/2)
+W_neg12=(W)**(1/2)
+w=0
+W=0
+for i in d13:
+    for j in cw:
+        for k in DM1_pos:
+            for l in DM1_neg:
+                while d13.index(i)==cw.index(j)==DM1_pos.index(k)==DM1_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos13=(w)**(1/2)
+W_neg13=(W)**(1/2)
+w=0
+W=0
+for i in d14:
+    for j in cw:
+        for k in DM1_pos:
+            for l in DM1_neg:
+                while d14.index(i)==cw.index(j)==DM1_pos.index(k)==DM1_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+
+w_pos14=(w)**(1/2)
+W_neg14=(W)**(1/2)
+w=0
+W=0
+for i in d15:
+    for j in cw:
+        for k in DM1_pos:
+            for l in DM1_neg:
+                while d15.index(i)==cw.index(j)==DM1_pos.index(k)==DM1_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos15=(w)**(1/2)
+W_neg15=(W)**(1/2)
+w=0
+W=0
+for i in d21:
+    for j in cw:
+        for k in DM2_pos:
+            for l in DM2_neg:
+                while d21.index(i)==cw.index(j)==DM2_pos.index(k)==DM2_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos21=(w)**(1/2)
+W_neg21=(W)**(1/2)
+w_pos1=[w_pos11,w_pos12,w_pos13,w_pos14,w_pos15]
+W_neg1=[W_neg11,W_neg12,W_neg13,W_neg14,W_neg15]
+
+#for matrix 2
+
+w=0
+W=0
+for i in d22:
+    for j in cw:
+        for k in DM2_pos:
+            for l in DM2_neg:
+                while d22.index(i)==cw.index(j)==DM2_pos.index(k)==DM2_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+
+w_pos22=(w)**(1/2)
+W_neg22=(W)**(1/2)
+w=0
+W=0
+for i in d23:
+    for j in cw:
+        for k in DM2_pos:
+            for l in DM2_neg:
+                while d23.index(i)==cw.index(j)==DM2_pos.index(k)==DM2_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos23=(w)**(1/2)
+W_neg23=(W)**(1/2)
+w=0
+W=0
+for i in d24:
+    for j in cw:
+        for k in DM2_pos:
+            for l in DM2_neg:
+                while d24.index(i)==cw.index(j)==DM2_pos.index(k)==DM2_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+
+w_pos24=(w)**(1/2)
+W_neg24=(W)**(1/2)
+w=0
+W=0
+for i in d25:
+    for j in cw:
+        for k in DM2_pos:
+            for l in DM2_neg:
+                while d25.index(i)==cw.index(j)==DM2_pos.index(k)==DM2_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos25=(w)**(1/2)
+W_neg25=(W)**(1/2)
+w_pos2=[w_pos21,w_pos22,w_pos23,w_pos24,w_pos25]
+W_neg2=[W_neg21,W_neg22,W_neg23,W_neg24,W_neg25]
+
+#for matrix 3
+
+w=0
+W=0
+for i in d31:
+    for j in cw:
+        for k in DM3_pos:
+            for l in DM3_neg:
+                while d31.index(i)==cw.index(j)==DM3_pos.index(k)==DM3_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos31=(w)**(1/2)
+W_neg31=(W)**(1/2)
+w=0
+W=0
+for i in d32:
+    for j in cw:
+        for k in DM3_pos:
+            for l in DM3_neg:
+                while d32.index(i)==cw.index(j)==DM3_pos.index(k)==DM3_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+
+w_pos32=(w)**(1/2)
+W_neg32=(W)**(1/2)
+w=0
+W=0
+for i in d33:
+    for j in cw:
+        for k in DM3_pos:
+            for l in DM3_neg:
+                while d33.index(i)==cw.index(j)==DM3_pos.index(k)==DM3_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos33=(w)**(1/2)
+W_neg33=(W)**(1/2)
+w=0
+W=0
+for i in d34:
+    for j in cw:
+        for k in DM3_pos:
+            for l in DM3_neg:
+                while d34.index(i)==cw.index(j)==DM3_pos.index(k)==DM3_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+
+w_pos34=(w)**(1/2)
+W_neg34=(W)**(1/2)
+w=0
+W=0
+for i in d35:
+    for j in cw:
+        for k in DM3_pos:
+            for l in DM3_neg:
+                while d35.index(i)==cw.index(j)==DM3_pos.index(k)==DM3_neg.index(l):
+                    w=w+j*((i-k)**2)
+                    W=W+j*((i-l)**2)
+                    break
+w_pos35=(w)**(1/2)
+W_neg35=(W)**(1/2)
+w_pos3=[w_pos31,w_pos32,w_pos33,w_pos34,w_pos35]
+W_neg3=[W_neg31,W_neg32,W_neg33,W_neg34,W_neg35]
+print('w_pos1',w_pos1)
+print('W_neg1',W_neg1)
+print('w_pos2',w_pos2)
+print('W_neg2',W_neg2)
+print('w_pos3',w_pos3)
+print('W_neg3',W_neg3)
+#
+R1=[]
+for i in w_pos1:
+    for j in W_neg1:
+        while w_pos1.index(i)==W_neg1.index(j):
+            x=j/(i+j)
+            R1.append(float(x))
+            break
+
+#
+
+R2=[]
+for i in w_pos2:
+    for j in W_neg2:
+        while w_pos2.index(i)==W_neg2.index(j):
+            x=j/(i+j)
+            R2.append(float(x))
+            break
+
+#
+
+R3=[]
+for i in w_pos3:
+    for j in W_neg3:
+        while w_pos3.index(i)==W_neg3.index(j):
+            x=j/(i+j)
+            R3.append(float(x))
+            break
+
+print('R1:',R1)
+print('R2:',R2)
+print('R3:',R3)
+#
+
+#
+print('Expert Weights:')
+ew1=0.337893
+ew2=0.454126
+ew3=0.207981
+ew=[ew1,ew2,ew3]
+print(ew)
+
+
+NR=[]
+for i in R1:
+    for j in R2:
+        for k in R3:
+            while R1.index(i)==R2.index(j)==R3.index(k):
+                a=((i)**ew1)*((j)**ew2)*((k)**ew3)
+                NR.append(float(a))
+                break
+
+print(NR)
+
+print('Normalized rank for b1:', NR[0])
+print('Normalized rank for b2:', NR[1])
+print('Normalized rank for b3:', NR[2])
+print('Normalized rank for b3:', NR[3])
+print('Normalized rank for b3:', NR[4])
+
+NR.sort()
+print('sorting in ascending order:',NR)
